@@ -1,67 +1,183 @@
-<H3>NAME: Prakasam P </H3>
-<H3>REGISTER NO: 212222040118 </H3>
-<H3>EX. NO.4 </H3>
-<H3>DATE:  </H3>
-<H1 ALIGN =CENTER> Implementation of Hidden Markov Model</H1>
 
-## Aim: 
-Construct a Python code to find the sequence of hidden states by the known sequence of observances using Hidden Markov Model. Consider two hidden states Sunny and Rainy with observable states,happy and sad.
+<H3>Prakasam P </H3>
+<H3>212222040118</H3>
+<H3>EX. NO.4</H3>
+<H3>27.09.2024</H3>
+<H1 ALIGN =CENTER>Implementation of MLP with Backpropagation for Multiclassification</H1>
+<H3>Aim:</H3>
+To implement a Multilayer Perceptron for Multi classification
+<H3>Theory</H3>
 
-## Algorithm:
+A multilayer perceptron (MLP) is a feedforward artificial neural network that generates a set of outputs from a set of inputs. An MLP is characterized by several layers of input nodes connected as a directed graph between the input and output layers. MLP uses back propagation for training the network. MLP is a deep learning method.
+A multilayer perceptron is a neural network connecting multiple layers in a directed graph, which means that the signal path through the nodes only goes one way. Each node, apart from the input nodes, has a nonlinear activation function. An MLP uses backpropagation as a supervised learning technique.
+MLP is widely used for solving problems that require supervised learning as well as research into computational neuroscience and parallel distributed processing. Applications include speech recognition, image recognition and machine translation.
+ 
+MLP has the following features:
 
-Step 1:Define the transition matrix, which specifies the probability of transitioning from  one hidden state to another.<br>
-Step 2:Define the emission matrix, which specifies the probability of observing each possible observation given each hidden state.<br>
-Step 3:Define the initial probabilities, which specify the probability of starting in each possible hidden state.<br>
-Step 4:Define the observed sequence, which is the sequence of observations need to  be analyzed.<br>
-Step 5:Initialize the alpha matrix with zeros, where each row represents a time step and each column represents a possible hidden state.<br>
-Step 6:Calculate the first row of the alpha matrix by multiplying the initial  probabilities by the emission probabilities for the first observation.<br>
-Step 7:Loop through the rest of the observed sequence and calculate the rest of the alpha matrix by multiplying the emission probabilities by the sum of the product of 
-       the previous row of the alpha matrix and the corresponding row of the transition matrix.<br>
-Step 8:Calculate the probability of the observed sequence by summing the last row of the alpha matrix.<br>
-Step 9:Find the most likely sequence of hidden states by selecting the hidden state with the highest probability at each time step based on the alpha matrix.<br>
+Ø  Adjusts the synaptic weights based on Error Correction Rule
 
-## Program:
+Ø  Adopts LMS
+
+Ø  possess Backpropagation algorithm for recurrent propagation of error
+
+Ø  Consists of two passes
+
+  	(i)Feed Forward pass
+	         (ii)Backward pass
+           
+Ø  Learning process –backpropagation
+
+Ø  Computationally efficient method
+
+![image 10](https://user-images.githubusercontent.com/112920679/198804559-5b28cbc4-d8f4-4074-804b-2ebc82d9eb4a.jpg)
+
+3 Distinctive Characteristics of MLP:
+
+Ø  Each neuron in network includes a non-linear activation function
+
+![image](https://user-images.githubusercontent.com/112920679/198814300-0e5fccdf-d3ea-4fa0-b053-98ca3a7b0800.png)
+
+Ø  Contains one or more hidden layers with hidden neurons
+
+Ø  Network exhibits high degree of connectivity determined by the synapses of the network
+
+3 Signals involved in MLP are:
+
+ Functional Signal
+
+*input signal
+
+*propagates forward neuron by neuron thro network and emerges at an output signal
+
+*F(x,w) at each neuron as it passes
+
+Error Signal
+
+   *Originates at an output neuron
+   
+   *Propagates backward through the network neuron
+   
+   *Involves error dependent function in one way or the other
+   
+Each hidden neuron or output neuron of MLP is designed to perform two computations:
+
+The computation of the function signal appearing at the output of a neuron which is expressed as a continuous non-linear function of the input signal and synaptic weights associated with that neuron
+
+The computation of an estimate of the gradient vector is needed for the backward pass through the network
+
+TWO PASSES OF COMPUTATION:
+
+In the forward pass:
+
+•       Synaptic weights remain unaltered
+
+•       Function signal are computed neuron by neuron
+
+•       Function signal of jth neuron is
+            ![image](https://user-images.githubusercontent.com/112920679/198814313-2426b3a2-5b8f-489e-af0a-674cc85bd89d.png)
+            ![image](https://user-images.githubusercontent.com/112920679/198814328-1a69a3cd-7e02-4829-b773-8338ac8dcd35.png)
+            ![image](https://user-images.githubusercontent.com/112920679/198814339-9c9e5c30-ac2d-4f50-910c-9732f83cabe4.png)
+
+
+
+If jth neuron is output neuron, the m=mL  and output of j th neuron is
+               ![image](https://user-images.githubusercontent.com/112920679/198814349-a6aee083-d476-41c4-b662-8968b5fc9880.png)
+
+Forward phase begins with in the first hidden layer and end by computing ej(n) in the output layer
+![image](https://user-images.githubusercontent.com/112920679/198814353-276eadb5-116e-4941-b04e-e96befae02ed.png)
+
+
+In the backward pass,
+
+•       It starts from the output layer by passing error signal towards leftward layer neurons to compute local gradient recursively in each neuron
+
+•        it changes the synaptic weight by delta rule
+
+![image](https://user-images.githubusercontent.com/112920679/198814362-05a251fd-fceb-43cd-867b-75e6339d870a.png)
+
+<H3>Algorithm:</H3>
+
+1. Import the necessary libraries of python.
+
+2. After that, create a list of attribute names in the dataset and use it in a call to the read_csv() function of the pandas library along with the name of the CSV file containing the dataset.
+
+3. Divide the dataset into two parts. While the first part contains the first four columns that we assign in the variable x. Likewise, the second part contains only the last column that is the class label. Further, assign it to the variable y.
+
+4. Call the train_test_split() function that further divides the dataset into training data and testing data with a testing data size of 20%.
+Normalize our dataset. 
+
+5. In order to do that we call the StandardScaler() function. Basically, the StandardScaler() function subtracts the mean from a feature and scales it to the unit variance.
+
+6. Invoke the MLPClassifier() function with appropriate parameters indicating the hidden layer sizes, activation function, and the maximum number of iterations.
+
+7. In order to get the predicted values we call the predict() function on the testing data set.
+
+8. Finally, call the functions confusion_matrix(), and the classification_report() in order to evaluate the performance of our classifier.
+
+<H3>Program:</H3> 
+
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+arr = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth', 'Species']
+df = pd.read_csv(url, names=arr)
+print(df.head())
+a = df.iloc[:, 0:4]
+b = df.select_dtypes(include=[object])
+b = df.iloc[:,4:5]
+training_a, testing_a, training_b, testing_b = train_test_split(a, b, test_size = 0.25)
+myscaler = StandardScaler()
+myscaler.fit(training_a)
+training_a = myscaler.transform(training_a)
+testing_a = myscaler.transform(testing_a)
+m1 = MLPClassifier(hidden_layer_sizes=(12, 13, 14), activation='relu', solver='adam', max_iter=2500)
+m1.fit(training_a, training_b.values.ravel())
+predicted_values = m1.predict(testing_a)
+print(confusion_matrix(testing_b,predicted_values))
+print(classification_report(testing_b,predicted_values))
 ```
-import numpy as np
-#Define the transition matrix
-transition_matrix =np.array([[0.7,0.3],[0.4,0.6]])
-#Define the emission matrix
-emission_matrix =np.array ([[0.1,0.9],[0.8,0.2]])
-#Define the initial probabilities
-initial_probabilities = np.array([0.5,0.5])
-#Define the observed sequence
-observed_sequence = np.array([1,1,1,0,0,1])
-
-# Initialize the alpha matrix
-alpha = np. zeros ((len(observed_sequence) ,len (initial_probabilities) ) )
-# Calculate the first row of the alpha matrix
-alpha [0,:] = initial_probabilities *emission_matrix[:, observed_sequence [0]]
-
-# Loop through the rest of the observed sequence and calculate the rest of the alpha matrix
-for t in range (1, len (observed_sequence) ) :
-  for j in range (len (initial_probabilities) ) :
-    alpha[t,j]= emission_matrix [j,observed_sequence[t]] *np.sum(alpha[t-1:]*transition_matrix[:, j])
-
-# Calculate the probability of the observed sequence
-probability = np.sum(alpha[-1,:])
-# Print the probability of the observed sequence
-print ("The probability of the observed sequence is: " ,probability)
-# Find the most likely sequence of weather states given the observed sequence
-most_likely_sequence=[]
-for t in range (len (observed_sequence)):
-  if alpha [t, 0] > alpha [t,1]:
-    most_likely_sequence.append ("sunny")
-  else:
-    most_likely_sequence.append ("rainy")
-
-print("The most likely sequence of Weather States is",most_likely_sequence)
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+arr = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth', 'Species']
+df = pd.read_csv(url, names=arr)
+print(df.head())
+a = df.iloc[:, 0:4]
+b = df.select_dtypes(include=[object])
+b = df.iloc[:,4:5]
+training_a, testing_a, training_b, testing_b = train_test_split(a, b, test_size = 0.25)
+myscaler = StandardScaler()
+myscaler.fit(training_a)
+training_a = myscaler.transform(training_a)
+testing_a = myscaler.transform(testing_a)
+m1 = MLPClassifier(hidden_layer_sizes=(12, 13, 14), activation='relu', solver='adam', max_iter=2500)
+m1.fit(training_a, training_b.values.ravel())
+predicted_values = m1.predict(testing_a)
+print(confusion_matrix(testing_b,predicted_values))
+print(classification_report(testing_b,predicted_values))
 ```
 
-## Output:
-![image](https://github.com/Jaiganesh235/Ex-4--AAI/assets/118657189/37f08e2d-1cdc-473c-afd7-61238d5d1f97)
-![image](https://github.com/Jaiganesh235/Ex-4--AAI/assets/118657189/8b7858b7-d45d-4ba7-b3f1-3c87d1a9745c)
+<H3>Output:</H3>
+
+![323485096-0d375c88-a363-42f5-bf16-eaddff85191f](https://github.com/Aravindsamy04/Ex-4-NN/assets/113497037/e7fcd204-4f49-4d16-9d26-7cc2af9acfa3)
 
 
-## Result:
-Thus Hidden Markov Model is implemented using python.
 
+
+![image](https://github.com/Aravindsamy04/Ex-4-NN/assets/113497037/d3e97503-ecbe-4ba2-900e-06d5a95a5b93)
+
+
+
+
+<H3>Result:</H3>
+Thus, MLP is implemented for multi-classification using python.
